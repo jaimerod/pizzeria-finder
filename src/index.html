@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script src="/bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script>
+    window.Polymer = window.Polymer || {};
+    window.Polymer.dom = "shadow";
+  </script>
+  <link rel="import" href="/bower_components/polymer/polymer.html" />
+  <link rel="import" href="/bower_components/paper-toolbar/paper-toolbar.html" />
+  <link rel="import" href="elements/pizza-map.html" />
+</head>
+<body class="fullbleed layout vertical">
+  <paper-header-panel class="flex">
+    <paper-toolbar>
+      <div>LA Pizza Finder</div>
+    </paper-toolbar>
+    <div>
+      <pizza-map></pizza-map>
+    </div>
+  </paper-header-panel>
+</body>
+</html>

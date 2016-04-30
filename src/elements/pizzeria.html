@@ -1,0 +1,44 @@
+<!-- Base elements -->
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/google-map/google-map-marker.html">
+
+<dom-module id="a-pizzaria">
+  <template>
+    <style></style>
+    <google-map-marker
+      map="{{map}}"
+      latitude={{details.geometry.location.lat}}
+      longitude="{{details.geometry.location.lng}}"
+      title="{{details.name}}"></google-map-marker>
+  </template>
+  <script>
+    Polymer({
+      is: 'a-pizzaria',
+      properties: {
+        details: {
+          type: Object
+        }
+      },
+      created: function() {},
+      ready: function () {
+        var that = this;
+        var marker = this.$$('google-map-marker');
+        marker.clickEvents = true;
+        marker.addEventListener('google-map-marker-click', function (e) {
+          that.fire('showDetails', {
+            id: that.details.id,
+            name: that.details.name,
+            address: that.details.vicinity,
+            rating: that.details.rating,
+            tags: that.details.types,
+            photos: that.details.photos
+          });
+        });
+      },
+      attributeChanged: function(name, type) {
+        console.log('Event: ' + this.localName + '#' + this.id + ' attribute ' + name +
+          ' was changed to ' + this.getAttribute(name));
+      }
+    });
+  </script>
+</dom-module>

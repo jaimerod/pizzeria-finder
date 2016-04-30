@@ -1,0 +1,51 @@
+<!-- Base elements -->
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/paper-input/paper-input.html" />
+<link rel="import" href="../bower_components/paper-button/paper-button.html" />
+
+<dom-module id="pizza-add-review">
+  <template>
+    <style>
+
+    </style>
+    <paper-card id="pizza-details" class="cyan" image$="{{photo}}" fadeImage>
+      <div class="card-content">
+        <div class="pizzaria-header">Add a Review</div>
+        <form>
+          <paper-input label="Input label"></paper-input>
+          <paper-button>Flat button</paper-button>
+        </form>
+      </div>
+    </paper-card>
+   
+  </template>
+  <script>
+    Polymer({
+      is: "pizza-add-review",
+      properties: {
+        name: {
+          type: String,
+          observer: '_nameChanged'
+        },
+        address: {
+          type: String,
+        },
+        rating: {
+          type: String,
+        },
+        tags: {
+          type: Array,
+        }
+      },
+      created: function() {},
+      ready: function () {
+        this.addEventListener('updateDetails', this.updateDetails);
+      },
+      _nameChanged: function(oldValue, newValue) {
+        console.dir(newValue);
+        var div = this.$$('div');
+        div.className = "active";
+      }
+    });
+  </script>
+</dom-module>

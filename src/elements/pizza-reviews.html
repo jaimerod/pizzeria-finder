@@ -1,0 +1,79 @@
+<!-- Base elements -->
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="pizza-review.html">
+<link rel="import" href="pizza-add-review.html">
+
+<dom-module id="pizza-reviews">
+  <template>
+    <style>
+      paper-card {
+        max-width: 350px;
+        margin: 8px auto;
+        --paper-card-header: {
+          background-color: rgb(100, 181, 246);
+        };
+      }
+    </style>
+    <paper-card heading="Reviews">
+      <div class="card-content">
+	      <template is="dom-repeat" items="{{reviews}}" as="review">
+	          <pizza-review details="{{review}}"></pizza-review>
+	      </template>
+      </div>
+    </paper-card>
+    <pizza-add-review></pizza-add-review>
+  </template>
+  <script>
+    Polymer({
+      is: "pizza-reviews",
+      properties: {
+        pizzaria: {
+          type: String,
+          observer: '_idChanged'
+        },
+        reviews: {
+          type: Array,
+          observer: '_reviewsChanged'
+        }
+      },
+      created: function() {},
+      ready: function () {
+        var that = this;
+
+        that.addEventListener('updateDetails', that.updateDetails);
+      },
+      getReviews: function () {
+
+      },
+      _idChanged: function () {
+        var that = this;
+        var Reviews = fetch('https://jaime.rodriguez-jr.com/reviews.php', {
+          method: 'post',
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+          },
+          body: "action=get&id=" + that.pizzaria
+        });
+
+        Reviews.then(function (response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +  response.status);
+            return;
+          }
+
+          // It worked!  Let's do stuff...
+          response.text().then(function (responseText) {
+            var json = JSON.parse(responseText);
+
+            if (typeof json.data !== "undefined") {
+              that.reviews = json.data;
+            }
+          });
+        })
+      },
+      _reviewsChanged: function(newValue, oldValue) {
+        console.dir(oldValue);
+      }
+    });
+  </script>
+</dom-module>

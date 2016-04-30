@@ -1,0 +1,84 @@
+<!-- Base elements -->
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="pizza-details.html">
+<link rel="import" href="pizzeria.html">
+
+<dom-module id="pizza-map">
+  <template>
+    <style>
+      google-map {
+        height: 400px;
+        margin-bottom: 8px;
+      }
+    </style>
+    <google-map
+      map="{{map}}"
+      api-key="AIzaSyBP6G38hX2uoNcjAHAUMQOYx1Uqv1z6PnQ"
+      latitude="34.05992193978781"
+      longitude="-118.2607514819336"
+      zoom="13"
+      disable-default-ui>
+      <template is="dom-repeat" items="{{pizzerias}}" as="pizzeria">
+        <pizzeria map="{{map}}" details={{pizzeria}}></pizzeria>
+      </template>
+    </google-map>
+    <pizza-details></pizza-details>
+  </template>
+  <script>
+    Polymer({
+      is: 'pizza-map',
+      properties: {
+        pizzerias: {
+          type: Array
+        }
+      },
+      ready: function () {
+        var that = this;
+
+        this.addEventListener('showDetails', this.showDetails);
+
+        // Check if we cached the Pizzarias
+        if (window.localStorage) {
+          var Pizzerias = localStorage.getItem('Pizzerias');
+          if (Pizzerias) {
+            that.pizzerias = JSON.parse(Pizzerias);
+            return;
+          }
+        }
+
+        // We didn't cache them, let's download some
+        var Pizzerias = fetch('https://jaime.rodriguez-jr.com/places.php');
+
+        Pizzerias.then(function (response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +  response.status);
+            return;
+          }
+
+          // It worked!  Let's do stuff...
+          response.text().then(function (responseText) {
+            that.pizzerias = JSON.parse(responseText);
+            localStorage.setItem('Pizzerias', responseText);
+          });
+        })
+      },
+
+      /**
+       * Sends the details to "pizza-details"
+       * @param  Object event the Event Object
+       * @return void
+       */
+      showDetails: function (event) {
+        console.log('Event: pizza-map.showDetails()');
+        var details = this.$$('pizza-details');
+        details.pizzeria = event.detail.id;
+        details.name = event.detail.name;
+        details.address = event.detail.address;
+        details.rating = event.detail.rating;
+        details.tags = event.detail.tags;
+        details.photos = event.detail.photos;
+      }
+    });
+  </script>
+</dom-module>

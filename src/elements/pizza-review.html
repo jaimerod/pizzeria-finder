@@ -1,0 +1,56 @@
+<!-- Base elements -->
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+
+<dom-module id="pizza-review">
+  <template>
+    <style>
+
+    </style>
+    <paper-card heading="{{details.name}}">
+      <div class="card-content">
+       <time datetime$="{{details.date}}">{{date}}</time>
+        <p><strong>{{details.title}}</strong></p>
+        <p>{{details.message}}</p>
+      </div>
+    </paper-card>
+  </template>
+  <script>
+    Polymer({
+      is: "pizza-review",
+      properties: {
+        details: {
+          type: Object,
+          observer: '_detailsUpdated'
+        }
+      },
+      created: function() {},
+      ready: function () {
+        this.addEventListener('updateDetails', this.updateDetails);
+
+
+      },
+      _detailsUpdated: function () {
+        console.log("Updated Details.");
+        var d = new Date(0);
+        var month = 0;
+        var day = 0;
+        var year = 0;
+
+        d.setUTCSeconds(this.details.date);
+        month = d.getMonth() + 1;
+        day = d.getDate();
+        year = d.getFullYear();
+        hours = d.getUTCHours() + 1;
+        if (hours > 12) {
+          hours = hours - 12;
+          ampm = "PM";
+        } else {
+          ampm = "AM"
+        }
+        minutes = d.getUTCMinutes();
+
+        this.date = month + "-" + day + "-" + year + " " + hours + ":" + minutes + ampm;
+      }
+    });
+  </script>
+</dom-module>
