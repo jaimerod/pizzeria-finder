@@ -1,0 +1,142 @@
+<!-- Base elements -->
+<link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/paper-card/paper-card.html" />
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html" />
+<link rel="import" href="pizza-reviews.html">
+
+<dom-module id="pizza-detail">
+  <template>
+    <style>
+      paper-card { /*display: none;*/ }
+      paper-card.active { display: block; }
+      .pizzeria-header { @apply(--paper-font-headline); }
+      .pizzeria-light { color: var(--paper-grey-600); }
+      .pizzeria-location {
+        float: right;
+        font-size: 15px;
+        vertical-align: middle;
+      }
+      .pizzeria-reserve { color: var(--google-blue-500); }
+      iron-icon.star {
+        --iron-icon-width: 16px;
+        --iron-icon-height: 16px;
+        color: var(--paper-amber-500);
+      }
+      iron-icon.star.gray { color: var(--paper-grey-500); }
+      paper-card {
+        /*max-width: 350px;*/
+        margin: 8px auto;
+        --paper-card-header-image: {
+          height: 200px;
+          background-position: center center;
+        }
+      }
+    </style>
+      <paper-card image$="{{photo}}">
+        <div class="card-content">
+          <div class="pizzeria-header">{{name}}</div>
+          <div class="pizzeria-rating">
+            <iron-icon class$="{{star1}}" icon="star"></iron-icon>
+            <iron-icon class$="{{star2}}" icon="star"></iron-icon>
+            <iron-icon class$="{{star3}}" icon="star"></iron-icon>
+            <iron-icon class$="{{star4}}" icon="star"></iron-icon>
+            <iron-icon class$="{{star5}}" icon="star"></iron-icon>
+          </div>
+          <p>
+            <template is="dom-repeat" items="{{tags}}">
+              {{item}},
+            </template>
+          </p>
+          <p class="pizzeria-light">Address: <span>{{address}}</span></p>
+          <div class="card-actions">
+            <paper-button on-click="showReviews">Read Reviews</paper-button>
+            <paper-button on-click="addReview">Add Review</paper-button>
+          </div>
+        </div>
+      </paper-card>
+      <!-- <pizza-reviews pizzeria={{pizzeria}}></pizza-reviews> -->
+  </template>
+  <script>
+    Polymer({
+      is: "pizza-detail",
+      properties: {
+        name: {
+          type: String
+        },
+        address: {
+          type: String
+        },
+        rating: {
+          type: String,
+          observer: '_ratingChanged'
+        },
+        tags: {
+          type: Array
+        },
+        star1: {
+          type: String,
+          value: "star"
+        },
+        star2: {
+          type: String,
+          value: "star"
+        },
+        star3: {
+          type: String,
+          value: "star"
+        },
+        star4: {
+          type: String,
+          value: "star"
+        },
+        star5: {
+          type: String,
+          value: "star"
+        },
+        photos: {
+          type: Array,
+          observer: '_photosChanged'
+        }
+      },
+      ready: function () {},
+
+      /**
+       * Observes the name property then shows the web component
+       * @return void
+       */
+      _ratingChanged: function(newValue, oldValue) {
+        console.dir(newValue);
+
+        var pizzaDetails = this.$$('paper-card');
+        pizzaDetails.className = "active";
+
+        // process stars
+        this.star5 = (newValue < 4.5) ? "star gray" : "star";
+        this.star4 = (newValue < 3.5) ? "star gray" : "star";
+        this.star3 = (newValue < 1.5) ? "star gray" : "star";
+        this.star2 = (newValue < 1.5) ? "star gray" : "star";
+        this.star1 = (newValue < 0.5) ? "star gray" : "star";
+      },
+      _photosChanged: function (newValue, oldValue) {
+        this.photo = "";
+        var base = "https://maps.googleapis.com/maps/api/place/photo?";
+        base = base + "photoreference=" +newValue[0].photo_reference;
+        base = base + "&maxheight=200";
+        base = base + "&key=AIzaSyBP6G38hX2uoNcjAHAUMQOYx1Uqv1z6PnQ"
+        this.photo = base;
+      },
+      addReview: function () {
+        console.dir('addReview');
+        this.fire('showAddReview', {
+          pid: this.pid
+        });
+      },
+      showReviews: function () {
+        console.dir('showReview');
+        this.fire('showReviews', {
+          pid: this.pid
+        });
+      }
+    });
+  </script>
+</dom-module>

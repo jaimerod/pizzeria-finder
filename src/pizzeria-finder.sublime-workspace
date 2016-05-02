@@ -1,0 +1,778 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"str_re",
+				"str_replace〔function〕"
+			],
+			[
+				"ob",
+				"ob_flush"
+			],
+			[
+				"json",
+				"json_encode〔function〕"
+			],
+			[
+				"get",
+				"getRequestToken〔function〕"
+			],
+			[
+				"oauth_",
+				"oauth_token_secret"
+			],
+			[
+				"add",
+				"addProductsButton"
+			],
+			[
+				"show",
+				"showProductsButton"
+			],
+			[
+				"class",
+				"className"
+			],
+			[
+				"acti",
+				"activeState"
+			],
+			[
+				"text",
+				"text-transform"
+			],
+			[
+				"padding",
+				"padding-right"
+			],
+			[
+				"back",
+				"background-position"
+			],
+			[
+				"no",
+				"no-repeat"
+			],
+			[
+				"font",
+				"font-weight"
+			],
+			[
+				"table",
+				"table-cell"
+			],
+			[
+				"adde",
+				"addEventListener"
+			],
+			[
+				"max",
+				"max-width"
+			],
+			[
+				"backgo",
+				"background"
+			],
+			[
+				"margin",
+				"margin-bottom"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1473,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "elements/pizza-map.html",
+			"settings":
+			{
+				"buffer_size": 2643,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "elements/pizza-reviews.html",
+			"settings":
+			{
+				"buffer_size": 2268,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "elements/pizza-add-review.html",
+			"settings":
+			{
+				"buffer_size": 1446,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "elements/pizza-details.html",
+			"settings":
+			{
+				"buffer_size": 750,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "elements/pizza-detail.html",
+			"settings":
+			{
+				"buffer_size": 4321,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"Package Control: ",
+				"Package Control: Install Package"
+			],
+			[
+				"bat",
+				"Set Syntax: Batch File"
+			],
+			[
+				"syn mark",
+				"Set Syntax: Markdown"
+			],
+			[
+				"syn",
+				"Set Syntax: Markdown"
+			],
+			[
+				"syn ja",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 126.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = 'eb2297e1a458f27d836c04bb0cbaf282' + 'd0e7a3098092775ccb37ca9d6b2e4b7d'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/mnt/raid0/Repositories/pizzeria-finder/src",
+		"/mnt/raid0/Repositories/pizzeria-finder/src/elements"
+	],
+	"file_history":
+	[
+		"/mnt/raid0/Repositories/pizzeria-finder/src/elements/pizza-reviews.html",
+		"/mnt/raid0/Repositories/pizzeria-finder/src/elements/pizzeria-marker.html",
+		"/mnt/raid0/Repositories/pizzeria-finder/src/elements/pizza-add-review.html",
+		"/mnt/raid0/Repositories/pizzeria-finder/src/elements/pizza-review.html",
+		"/mnt/raid0/Repositories/pizzeria-finder/src/index.html",
+		"/mnt/raid0/Repositories/pizzeria-finder/src/bower_components/paper-drawer-panel/paper-drawer-panel.html",
+		"/mnt/raid0/Repositories/pizzeria-finder/src/elements/pizza-details.html",
+		"/mnt/raid0/Repositories/pizzeria-finder/src/elements/pizza-map.html",
+		"/home/jaime/Desktop/restaurant-review/js/main.js",
+		"/home/jaime/Desktop/restaurant-review/index.html",
+		"/home/jaime/Desktop/restaurant-review/elements/default.html",
+		"/home/jaime/Desktop/restaurant-review/elements/data-binding.html",
+		"/home/jaime/Desktop/restaurant-review/sample.html",
+		"/C/repo/restaurant-review/index.html",
+		"/C/repo/restaurant-review/js/main.js",
+		"/C/repo/restaurant-review/README.md",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/app/templates/components/header.tpl",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/app/modules/hide-staging/hider.php",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/scss/partials/_sidebar.scss",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/scss/partials/_navigation.scss",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/scss/partials/_masthead.scss",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/scss/partials/_page-specific.scss",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/scss/modules/_all.scss",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/scss/modules/_utils.scss",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/scss/partials/_buttons.scss",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/scss/partials/_structure.scss",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/scss/partials/_forms.scss",
+		"/C/Users/hiiam/AppData/Local/Temp/fz3temp-1/main.css",
+		"/C/repo/gitlab.envivent.com/commonwealth/ibschek.com/src/hcp/ordering-ibschek/yes/reqdek/index.php",
+		"/C/Users/hiiam/Desktop/geography and xr.sql",
+		"/C/repo/public-transportation/src/js/data.js",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/themes/custom/signalgenetics/templates/html.html.twig",
+		"/C/Users/hiiam/Downloads/invite.ics",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2016-03-21 11.31.07,811.eml",
+		"/C/Users/hiiam/Desktop/find-dynamic.txt",
+		"/C/Users/hiiam/AppData/Local/Temp/7zOA92F.tmp/find-dynamic.txt",
+		"/C/Users/hiiam/BitTorrent Sync/sync/portable/sublime-text/Data/Packages/Alignment/Default (Windows).sublime-keymap",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2016-03-18 10.40.00,911.eml",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/sites/default/settings.php",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2016-03-17 17.18.19,434.eml",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2016-03-17 17.18.19,403.eml",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2016-03-17 17.18.12,798.eml",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2016-03-17 17.18.12,759.eml",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2016-03-17 17.13.40,718.eml",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/database.sql",
+		"/C/repo/signalgenetics.com/www.signalgenetics.com/sites/default/settings.live.php",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/inc/clsISI.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_disease_classification.asp",
+		"/C/IWTemp/bybz25/cache/default/main/MarketingSites/BSP/Xofigo/LicensedFacilitiesDB/USA/LicensedFacilitiesDB/WORKAREA/htdocs/meta/repl_db.sql",
+		"/C/IWTemp/bybz25/cache/default/main/MarketingSites/BSP/Xofigo/LicensedFacilitiesDB/USA/LicensedFacilitiesDB/WORKAREA/htdocs/js/main.js",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/inc/references-hcp.txt",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/inc/template.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_home.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_prostacyclin_in_pah.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_ventavis_learning_center.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_the_ineb_is_my_neb.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_actelion_pathways.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_contact_us.asp",
+		"/C/Users/hiiam/Desktop/readyState-start/index.html",
+		"/C/Users/hiiam/Desktop/setTimeout-start.html",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/css/patient.css",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/index.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/inc/sitemap.ini",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_pah_pathways.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_understanding_your_role.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_resources.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/css/global.css",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/css/fonts.css",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/css/patient_home.css",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_who_takes_ventavis.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_ventavis_dosing_options.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_cleaning.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_abcs_making_the_most_of_ventavis_treatments.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_about_pah.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_setting_up_the_ineb_aad.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_ventavis_learning_center.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_useful_links.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_references.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/inc/clsReferences.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/inc/references-patient.txt",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_diagnosing_pah.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_dosage_and_administration.asp",
+		"/C/Users/hiiam/BitTorrent Sync/sync/documents/Fundamentals of management.md",
+		"/C/Users/hiiam/BitTorrent Sync/sync/documents/edu-email.txt",
+		"/C/Users/hiiam/BitTorrent Sync/sync/documents/courses.md",
+		"/C/Users/hiiam/BitTorrent Sync/sync/documents/automate-git.txt",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_how_the_aad_system_works.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_breathing_technique.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_faqs.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_specialty_pharmacy.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/css/hcp.css",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_services_for_your_patients.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_resources.asp",
+		"/C/Users/hiiam/BitTorrent Sync/sync/documents/CFM/songfiles.xml",
+		"/C/Users/hiiam/BitTorrent Sync/sync/documents/BADTRIP.md",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_cleaning_the_aad_system.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_components.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_about_the_ineb_aad_system.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_about_ventavis.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_clinical_trials.asp",
+		"/C/Users/hiiam/Desktop/index.php",
+		"/C/Users/hiiam/Downloads/Mail Attachment.eml",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/libs/expandable/expandable.css",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/hcp_pah_pathways.asp",
+		"/C/Users/hiiam/Desktop/DESKTOP/glogreen/platforms/android/assets/www/node_modules/lodash/internal/isIterateeCall.js",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/inc/ssl.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_living_with_pah.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_getting_started.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/src/patient_ventavis_faqs.asp",
+		"/C/repo/gitlab.envivent.com/actelion/4ventavis.com/patient_ventavis_faqs.asp",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/scss/partials/_structure.scss",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/scss/partials/_faq.scss",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/scss/partials/_content.scss",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/scss/partials/_typography.scss",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/app/views/dry-mouth-faqs.php",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/app/templates/components/faq.tpl",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/scss/main.scss",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/app/modules/class.sitemap.php",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/app/templates/components/footer.tpl",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/scss/modules/_fonts.scss",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2015-08-23 22.17.41,197.eml",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/app/modules/url-class/urlclass.php",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/scss/modules/_utils.scss",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/app/modules/navigation/class.navigation.php",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/app/modules/menus.php",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2015-08-23 07.57.53,852.eml",
+		"/C/Users/hiiam/Desktop/Mail Sent to Local Server/2015-08-23 07.43.27,076.eml",
+		"/C/repo/gitlab.envivent.com/orapharma/neutrasal.com/src/scss/partials/_navigation.scss"
+	],
+	"find":
+	{
+		"height": 41.0
+	},
+	"find_in_files":
+	{
+		"height": 115.0,
+		"where_history":
+		[
+			"C:\\repo\\signalgenetics.com\\www.signalgenetics.com\\themes\\custom\\signalgenetics\\scss",
+			"<project>",
+			"C:\\repo\\gitlab.envivent.com\\actelion\\4ventavis.com\\src",
+			"C:\\repo\\gitlab.envivent.com\\actelion\\4ventavis.com",
+			"C:\\repo\\gitlab.envivent.com\\actelion\\4ventavis.com\\src",
+			"C:\\repo\\gitlab.envivent.com\\orapharma\\neutrasal.com",
+			"<project>",
+			"C:\\Repositories\\gitlab.envivent.com\\actelion",
+			"C:\\Repositories\\gitlab.envivent.com\\actelion\\4ventavis.com\\src",
+			"C:\\Repositories\\gitlab.envivent.com\\actelion\\4ventavis.com",
+			"C:\\Repositories\\gitlab.envivent.com\\actelion",
+			"C:\\Repositories\\gitlab.envivent.com\\actelion\\4ventavis.com",
+			"C:\\Repositories\\gitlab.envivent.com\\actelion\\4ventavis.com\\src\\inc",
+			"<project>",
+			"C:\\Repositories\\gitlab.envivent.com\\ipsen\\dysport.com\\src",
+			"Dysport%20Full%20Prescribing%20Information.pdf",
+			"C:\\Repositories\\gitlab.envivent.com\\ipsen\\ipsencares.com\\src\\scss",
+			"C:\\Repositories\\acquia.com\\actelion\\opsumithcp.com\\docroot"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"card",
+			"header-panel",
+			"pizzeria-marker",
+			"pizza-details",
+			"header-panel",
+			"paper-toolbar",
+			"paper-header-panel",
+			"drawer",
+			"drawer-panel",
+			"icon-button",
+			"toolbar",
+			"pizzeria",
+			"pizzaria",
+			"workaround",
+			"data",
+			"default-element",
+			"h2",
+			"item",
+			"xhr.",
+			"button",
+			"rotate",
+			"columns",
+			".hero",
+			"2070",
+			".hero",
+			"page-title",
+			"background-size:",
+			"footer",
+			"header",
+			"#block-signalgenetics-main-",
+			"#block-signalgenetics-main-n",
+			"html",
+			"padding: 50px",
+			".help",
+			"1024",
+			"float",
+			"sidebar",
+			".sidebar",
+			"overflow",
+			"nth",
+			"button",
+			"30px",
+			"mainnavigation",
+			"main-nav",
+			"nth-",
+			"        ",
+			"          ",
+			"        ",
+			":          ",
+			"margin-top:          ",
+			";height:          ",
+			":          ",
+			"width:          ",
+			"margin-left:          ",
+			":          ",
+			"./livanova/sql/",
+			"/cache/normal/",
+			":          ",
+			":\\s\\s*",
+			":					    	",
+			":\\s",
+			":								",
+			":\\s\\s*",
+			"watchdog",
+			"field_data_body",
+			"cache_field",
+			"field_revision_field_body",
+			"field_revision_body",
+			"rewrite",
+			"domain.com",
+			"/newpage/",
+			"newpage",
+			"http://www.domain.com/newpage",
+			"oldpage",
+			"YOUR-USER-NAME",
+			"SMTPAccountName@gmail.com",
+			"RenderISI_HCP",
+			"indication",
+			"chk_patient_ready",
+			"leftnav",
+			"https",
+			"contact me",
+			"contact medical",
+			"contact medial",
+			"Case Managers",
+			"PAH Patient Case Managers",
+			"VENTAVIS 20 mcg/mL concentration order form is intended for patients who are maintained at the 5 mcg dose and who have repeatedly experienced extended treatment times which could result in incomplete dosing. VENTAVIS 10 mcg/m",
+			"inactive",
+			".wf-loading ",
+			"who takes",
+			"pah_",
+			"McLaughlin VV",
+			"RenderReferences",
+			"AAD",
+			"ADD",
+			"For more information about VENTAVIS, please call 1-866-ACTELION (1-866-228-3546).",
+			"footer_copy",
+			"footer-copy",
+			"Respironics and I-neb Adaptive Aerosol Delivery (AAD) ",
+			".hcp-home",
+			"#isi",
+			"22px",
+			"hcp-home",
+			"marging",
+			"trackable",
+			"pathways",
+			"contact_us",
+			"ssl",
+			"https",
+			"contact",
+			"https",
+			"left",
+			"NeutraSal®",
+			"'question'",
+			"NeutraSal®",
+			"lato",
+			"link",
+			"Module\\StaticCache",
+			"ob_",
+			"rrmdir",
+			"\"link\": \"/",
+			"'logo.png'",
+			"after",
+			"title=\"PAH Pathways\"",
+			"class=\"callout\"",
+			"toggle",
+			"col-right",
+			"RenderIndication"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"",
+			":          ",
+			"Dysport%20Patient%20Medication%20Guide.pdf",
+			"Dysport%20Full%20Prescribing%20Information.pdf",
+			"'"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": false,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1473,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								528,
+								528
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "elements/pizza-map.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2643,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2364,
+								2364
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1425.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "elements/pizza-reviews.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2268,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2110,
+								2110
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1050.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "elements/pizza-add-review.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1446,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								749,
+								749
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "elements/pizza-details.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 750,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								571,
+								571
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "elements/pizza-detail.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 4321,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4131,
+								4131
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1725.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 34.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 389.0
+	},
+	"pinned_build_system": "",
+	"project": "pizzeria-finder.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 274.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

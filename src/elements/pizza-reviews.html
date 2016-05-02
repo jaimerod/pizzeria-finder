@@ -1,58 +1,46 @@
 <!-- Base elements -->
 <link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/paper-card/paper-card.html" />
 <link rel="import" href="pizza-review.html">
-<link rel="import" href="pizza-add-review.html">
 
 <dom-module id="pizza-reviews">
   <template>
-    <style>
-      paper-card {
-        max-width: 350px;
-        margin: 8px auto;
-        --paper-card-header: {
-          background-color: rgb(100, 181, 246);
-        };
-      }
-    </style>
-    <paper-card heading="Reviews">
-      <div class="card-content">
-	      <template is="dom-repeat" items="{{reviews}}" as="review">
-	          <pizza-review details="{{review}}"></pizza-review>
-	      </template>
+    <paper-dialog id="">
+      <h2>Reviews</h2>
+      <paper-dialog-scrollable>
+        <template is="dom-repeat" items="{{reviews}}" as="review">
+          <pizza-review details="{{review}}"></pizza-review>
+        </template>
+      </paper-dialog-scrollable>
+      <div class="buttons">
+        <paper-button on-click="showAddReview">Add Review</paper-button>
+        <paper-button on-click="closeReviews">Close</paper-button>
       </div>
-    </paper-card>
-    <pizza-add-review></pizza-add-review>
+    </paper-dialog>
   </template>
   <script>
     Polymer({
       is: "pizza-reviews",
       properties: {
-        pizzaria: {
+        pid: {
           type: String,
-          observer: '_idChanged'
+          observer: '_pidChanged'
         },
         reviews: {
           type: Array,
           observer: '_reviewsChanged'
         }
       },
-      created: function() {},
-      ready: function () {
-        var that = this;
-
-        that.addEventListener('updateDetails', that.updateDetails);
-      },
-      getReviews: function () {
-
-      },
-      _idChanged: function () {
+      _pidChanged: function () {
+        if (this.pid == 0) return;
+        
         var that = this;
         var Reviews = fetch('https://jaime.rodriguez-jr.com/reviews.php', {
           method: 'post',
           headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
           },
-          body: "action=get&id=" + that.pizzaria
+          body: "action=get&id=" + that.pid
         });
 
         Reviews.then(function (response) {
@@ -72,7 +60,18 @@
         })
       },
       _reviewsChanged: function(newValue, oldValue) {
-        console.dir(oldValue);
+        var el = this.$$('paper-dialog');
+        el.open();
+      },
+      showAddReview: function (event) {
+        this.fire('showAddReview', {
+          pid: this.pid
+        });
+      },
+      closeReviews: function () {
+        this.pid=0;
+        var el = this.$$('paper-dialog');
+        el.close();
       }
     });
   </script>

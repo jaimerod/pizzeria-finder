@@ -2,7 +2,7 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
 <link rel="import" href="../bower_components/google-map/google-map-marker.html">
 
-<dom-module id="a-pizzaria">
+<dom-module id="pizzeria-marker">
   <template>
     <style></style>
     <google-map-marker
@@ -13,7 +13,7 @@
   </template>
   <script>
     Polymer({
-      is: 'a-pizzaria',
+      is: 'pizzeria-marker',
       properties: {
         details: {
           type: Object
@@ -25,14 +25,14 @@
         var marker = this.$$('google-map-marker');
         marker.clickEvents = true;
         marker.addEventListener('google-map-marker-click', function (e) {
-          that.fire('showDetails', {
+          /*that.fire('showDetails', {
             id: that.details.id,
             name: that.details.name,
             address: that.details.vicinity,
             rating: that.details.rating,
             tags: that.details.types,
             photos: that.details.photos
-          });
+          });*/
         });
       },
       attributeChanged: function(name, type) {

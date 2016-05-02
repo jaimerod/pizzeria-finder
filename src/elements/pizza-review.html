@@ -1,10 +1,13 @@
 <!-- Base elements -->
 <link rel="import" href="../bower_components/polymer/polymer.html" />
+<link rel="import" href="../bower_components/paper-card/paper-card.html" />
 
 <dom-module id="pizza-review">
   <template>
     <style>
-
+    paper-card {
+      display: block;
+    }
     </style>
     <paper-card heading="{{details.name}}">
       <div class="card-content">
@@ -24,11 +27,7 @@
         }
       },
       created: function() {},
-      ready: function () {
-        this.addEventListener('updateDetails', this.updateDetails);
-
-
-      },
+      ready: function () {},
       _detailsUpdated: function () {
         console.log("Updated Details.");
         var d = new Date(0);

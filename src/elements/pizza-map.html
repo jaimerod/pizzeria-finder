@@ -2,7 +2,9 @@
 <link rel="import" href="../bower_components/polymer/polymer.html" />
 <link rel="import" href="../bower_components/google-map/google-map.html">
 <link rel="import" href="pizza-details.html">
-<link rel="import" href="pizzeria.html">
+<link rel="import" href="pizza-add-review.html">
+<link rel="import" href="pizza-reviews.html">
+<link rel="import" href="pizzeria-marker.html">
 
 <dom-module id="pizza-map">
   <template>
@@ -20,10 +22,13 @@
       zoom="13"
       disable-default-ui>
       <template is="dom-repeat" items="{{pizzerias}}" as="pizzeria">
-        <pizzeria map="{{map}}" details={{pizzeria}}></pizzeria>
+        <pizzeria-marker map="{{map}}" details="{{pizzeria}}"></pizzeria-marker>
       </template>
     </google-map>
-    <pizza-details></pizza-details>
+
+    <pizza-details details="{{pizzerias}}"></pizza-details>
+    <pizza-reviews></pizza-reviews>
+    <pizza-add-review></pizza-add-review>
   </template>
   <script>
     Polymer({
@@ -36,9 +41,10 @@
       ready: function () {
         var that = this;
 
-        this.addEventListener('showDetails', this.showDetails);
+        this.addEventListener('showReviews', this.showReviews);
+        this.addEventListener('showAddReview', this.showAddReview);
 
-        // Check if we cached the Pizzarias
+        // Check if we cached the Pizzerias
         if (window.localStorage) {
           var Pizzerias = localStorage.getItem('Pizzerias');
           if (Pizzerias) {
@@ -63,21 +69,16 @@
           });
         })
       },
-
-      /**
-       * Sends the details to "pizza-details"
-       * @param  Object event the Event Object
-       * @return void
-       */
-      showDetails: function (event) {
-        console.log('Event: pizza-map.showDetails()');
-        var details = this.$$('pizza-details');
-        details.pizzeria = event.detail.id;
-        details.name = event.detail.name;
-        details.address = event.detail.address;
-        details.rating = event.detail.rating;
-        details.tags = event.detail.tags;
-        details.photos = event.detail.photos;
+      showReviews: function (event) {
+        console.dir(event);
+        var ReviewsDialog = this.$$('pizza-reviews');
+        ReviewsDialog.pid = event.detail.pid;
+        //ReviewsDialog.show();
+      },
+      showAddReview: function (event) {
+        var addReviewDialog = this.$$('pizza-add-review');
+        addReviewDialog.pid = event.detail.pid;
+        addReviewDialog.show();
       }
     });
   </script>
