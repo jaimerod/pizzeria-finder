@@ -7,7 +7,14 @@
 <dom-module id="pizza-detail">
   <template>
     <style>
-      paper-card { /*display: none;*/ }
+      paper-card {
+        width: 48%;
+      }
+      @media (max-width: 680px) {
+        paper-card {
+          width: 100%;
+        }
+      }
       paper-card.active { display: block; }
       .pizzeria-header { @apply(--paper-font-headline); }
       .pizzeria-light { color: var(--paper-grey-600); }

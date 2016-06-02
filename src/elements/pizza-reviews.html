@@ -1,11 +1,14 @@
 <!-- Base elements -->
 <link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/paper-card/paper-card.html" />
+<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html" />
+<link rel="import" href="../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html" />
 <link rel="import" href="pizza-review.html">
 
 <dom-module id="pizza-reviews">
   <template>
-    <paper-dialog id="">
+    <style>
+    </style>
+    <paper-dialog id="reviews">
       <h2>Reviews</h2>
       <paper-dialog-scrollable>
         <template is="dom-repeat" items="{{reviews}}" as="review">
@@ -19,6 +22,7 @@
     </paper-dialog>
   </template>
   <script>
+    
     Polymer({
       is: "pizza-reviews",
       properties: {
@@ -30,6 +34,14 @@
           type: Array,
           observer: '_reviewsChanged'
         }
+      },
+      ready: function (event) {
+        var that = this;
+        var dialog = this.$$('#reviews');
+        dialog.clickEvents = true;
+        dialog.addEventListener('iron-overlay-closed', function (e) {
+          that.closeReviews();
+        });
       },
       _pidChanged: function () {
         if (this.pid == 0) return;

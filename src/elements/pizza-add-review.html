@@ -1,23 +1,26 @@
 <!-- Base elements -->
 <link rel="import" href="../bower_components/polymer/polymer.html" />
 <link rel="import" href="../bower_components/paper-dialog/paper-dialog.html" />
+<link rel="import" href="../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html" />
 <link rel="import" href="../bower_components/paper-input/paper-input.html" />
 <link rel="import" href="../bower_components/paper-button/paper-button.html" />
 
 <dom-module id="pizza-add-review">
+  <style>
+
+  </style>
   <template>
     <paper-dialog id="">
       <h2>Add a Review</h2>
-      <paper-dialog-scrollable>
+      <paper-dialog-scrollable can-scroll>
         <form>
-          <paper-input label="Name"></paper-input>
-          <paper-input label="Date"></paper-input>
-          <paper-input label="Comment"></paper-input>
+          <paper-input id="name" label="Name"></paper-input>
+          <paper-input id="comment" label="Comment"></paper-input>
         </form>
       </paper-dialog-scrollable>
       <div class="buttons">
         <paper-button dialog-dismiss>Cancel</paper-button>
-        <paper-button dialog-confirm>Accept</paper-button>
+        <paper-button dialog-confirm on-click="sendReview">Accept</paper-button>
       </div>
     </paper-dialog>
   </template>
@@ -41,6 +44,33 @@
         console.log("Add review event fired.");
         var el = this.$$('paper-dialog');
         el.open();
+      },
+      sendReview: function () {
+        console.log("Sending Review");
+        
+
+        var that = this;
+        var name = this.$$('#name');
+        var comment = this.$$('#comment');
+
+        console.dir(name);
+
+        var payload = "";
+        payload += "action=add";
+        payload += "&id=" + that.pid;
+        payload += "&name=" + name.value;
+        payload += "&message=" + comment.value;
+
+        fetch("https://jaime.rodriguez-jr.com/reviews.php", {
+          body: payload,
+          headers: {
+            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+          },
+          method: "post"
+        }).then(function () {
+          name.value = "";
+          comment.value = "";
+        });
       }
     });
   </script>

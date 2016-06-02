@@ -14,7 +14,7 @@
         margin-bottom: 8px;
       }
     </style>
-    <google-map
+    <!--<google-map
       map="{{map}}"
       api-key="AIzaSyBP6G38hX2uoNcjAHAUMQOYx1Uqv1z6PnQ"
       latitude="34.05992193978781"
@@ -24,7 +24,7 @@
       <template is="dom-repeat" items="{{pizzerias}}" as="pizzeria">
         <pizzeria-marker map="{{map}}" details="{{pizzeria}}"></pizzeria-marker>
       </template>
-    </google-map>
+    </google-map>-->
 
     <pizza-details details="{{pizzerias}}"></pizza-details>
     <pizza-reviews></pizza-reviews>
@@ -45,7 +45,7 @@
         this.addEventListener('showAddReview', this.showAddReview);
 
         // Check if we cached the Pizzerias
-        if (window.localStorage) {
+        if (window.localStorage && false) {
           var Pizzerias = localStorage.getItem('Pizzerias');
           if (Pizzerias) {
             that.pizzerias = JSON.parse(Pizzerias);
