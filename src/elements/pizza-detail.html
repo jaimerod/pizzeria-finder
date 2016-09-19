@@ -1,19 +1,15 @@
 <!-- Base elements -->
-<link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/paper-card/paper-card.html" />
-<link rel="import" href="../bower_components/iron-icons/iron-icons.html" />
+<link rel="import" href="../lib/polymer/polymer.html" />
+<link rel="import" href="../lib/paper-card/paper-card.html" />
+<link rel="import" href="../lib/iron-icons/iron-icons.html" />
 <link rel="import" href="pizza-reviews.html">
 
 <dom-module id="pizza-detail">
   <template>
     <style>
-      paper-card {
-        width: 48%;
-      }
+      paper-card {width: 48%;}
       @media (max-width: 680px) {
-        paper-card {
-          width: 100%;
-        }
+        paper-card {width: 100%;}
       }
       paper-card.active { display: block; }
       .pizzeria-header { @apply(--paper-font-headline); }
@@ -31,7 +27,6 @@
       }
       iron-icon.star.gray { color: var(--paper-grey-500); }
       paper-card {
-        /*max-width: 350px;*/
         margin: 8px auto;
         --paper-card-header-image: {
           height: 200px;
@@ -39,43 +34,61 @@
         }
       }
     </style>
-      <paper-card image$="{{photo}}">
-        <div class="card-content">
-          <div class="pizzeria-header">{{name}}</div>
-          <div class="pizzeria-rating">
-            <iron-icon class$="{{star1}}" icon="star"></iron-icon>
-            <iron-icon class$="{{star2}}" icon="star"></iron-icon>
-            <iron-icon class$="{{star3}}" icon="star"></iron-icon>
-            <iron-icon class$="{{star4}}" icon="star"></iron-icon>
-            <iron-icon class$="{{star5}}" icon="star"></iron-icon>
-          </div>
-          <p>
-            <template is="dom-repeat" items="{{tags}}">
-              {{item}},
-            </template>
-          </p>
-          <p class="pizzeria-light">Address: <span>{{address}}</span></p>
-          <div class="card-actions">
-            <paper-button on-click="showReviews">Read Reviews</paper-button>
-            <paper-button on-click="addReview">Add Review</paper-button>
-          </div>
+    <paper-card image$="{{photo}}" alt="{{name}} header image">
+      <div class="card-content">
+        <div class="pizzeria-header">{{name}}</div>
+        <div class="pizzeria-rating">
+          {{rating}}
+          <iron-icon class$="{{star1}}" icon="star"></iron-icon>
+          <iron-icon class$="{{star2}}" icon="star"></iron-icon>
+          <iron-icon class$="{{star3}}" icon="star"></iron-icon>
+          <iron-icon class$="{{star4}}" icon="star"></iron-icon>
+          <iron-icon class$="{{star5}}" icon="star"></iron-icon>
         </div>
-      </paper-card>
-      <!-- <pizza-reviews pizzeria={{pizzeria}}></pizza-reviews> -->
+        <p><strong>Address:</strong></p>
+        <p>{{address}}</p>
+        <p><strong>Hours of Operation:</strong></p>
+        <ul>
+          <template is="dom-repeat" items="{{hours}}">
+            <li>{{item}}</li>
+          </template>
+        </ul>
+        <p>
+          <strong>Tags: </strong>
+          <template is="dom-repeat" items="{{tags}}">
+            <span>{{item}} </span>
+          </template>
+        </p>
+        <div class="card-actions">
+          <paper-button on-click="showReviews">Read Reviews</paper-button>
+          <paper-button on-click="addReview">Add Review</paper-button>
+        </div>
+      </div>
+    </paper-card>
   </template>
   <script>
     Polymer({
       is: "pizza-detail",
+
       properties: {
+        placeid: {
+          type: String
+        },
         name: {
           type: String
         },
         address: {
           type: String
         },
+        hours: {
+          type: Array
+        },
+        reviews: {
+          type: Array
+        },
         rating: {
-          type: String,
-          observer: '_ratingChanged'
+          type: Number,
+          observer: "_ratingChanged"
         },
         tags: {
           type: Array
@@ -105,43 +118,60 @@
           observer: '_photosChanged'
         }
       },
-      ready: function () {},
 
-      /**
-       * Observes the name property then shows the web component
-       * @return void
-       */
-      _ratingChanged: function(newValue, oldValue) {
-        console.dir(newValue);
+      ready: function () {
+        var that = this;
+        var Details = fetch('https://jaime.rodriguez-jr.com/places.php?action=details&id=' + that.placeid);
 
-        var pizzaDetails = this.$$('paper-card');
-        pizzaDetails.className = "active";
+        Details.then(function (response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +  response.status);
+            return;
+          }
 
-        // process stars
-        this.star5 = (newValue < 4.5) ? "star gray" : "star";
-        this.star4 = (newValue < 3.5) ? "star gray" : "star";
-        this.star3 = (newValue < 1.5) ? "star gray" : "star";
-        this.star2 = (newValue < 1.5) ? "star gray" : "star";
-        this.star1 = (newValue < 0.5) ? "star gray" : "star";
+          // It worked!  Let's do stuff...
+          response.text().then(function (responseText) {
+            var place = JSON.parse(responseText).result;
+
+            if (place) {
+              that.address = place.formatted_address;
+              that.tags = place.types;
+              that.hours = place.opening_hours.weekday_text;
+              that.reviews = place.reviews;
+            }
+          });
+        })
       },
+
       _photosChanged: function (newValue, oldValue) {
         this.photo = "";
         var base = "https://maps.googleapis.com/maps/api/place/photo?";
-        base = base + "photoreference=" +newValue[0].photo_reference;
+        base = base + "photoreference=" + newValue[0].photo_reference;
         base = base + "&maxheight=200";
-        base = base + "&key=AIzaSyBP6G38hX2uoNcjAHAUMQOYx1Uqv1z6PnQ"
+        base = base + "&key={{APIKEY}}"
         this.photo = base;
       },
+
+      _ratingChanged: function (newValue, oldValue) {
+        var that = this;
+
+        that.star5 = (that.rating < 4.5) ? "star gray" : "star";
+        that.star4 = (that.rating < 3.5) ? "star gray" : "star";
+        that.star3 = (that.rating < 2.5) ? "star gray" : "star";
+        that.star2 = (that.rating < 1.5) ? "star gray" : "star";
+        that.star1 = (that.rating < 0.5) ? "star gray" : "star";
+      },
+
       addReview: function () {
-        console.dir('addReview');
         this.fire('showAddReview', {
           pid: this.pid
         });
       },
+
       showReviews: function () {
-        console.dir('showReview');
         this.fire('showReviews', {
-          pid: this.pid
+          pid: this.pid,
+          reviews: this.reviews
         });
       }
     });

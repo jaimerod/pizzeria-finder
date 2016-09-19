@@ -1,29 +1,70 @@
 <!-- Base elements -->
-<link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/paper-card/paper-card.html" />
+<link rel="import" href="../lib/polymer/polymer.html" />
+<link rel="import" href="../lib/paper-card/paper-card.html" />
 <link rel="import" href="pizza-detail.html">
 
 <dom-module id="pizza-details">
   <template>
-    <style>
-      
-    </style>
-    <template is="dom-repeat" items="{{details}}" as="detail">
-      <pizza-detail 
+    <style></style>
+    <template
+      is="dom-repeat"
+      items="{{details}}"
+      as="detail"
+      filter="_filter"
+      sort="{{_sort(sorting)}}">
+      <pizza-detail
+        placeid="{{detail.place_id}}"
         address="{{detail.vicinity}}"
         pid="{{detail.id}}"
-        name="{{detail.name}}" 
+        name="{{detail.name}}"
         photos="{{detail.photos}}"
-        tags="{{detail.type}}">
+        tags="{{detail.type}}"
+        rating="{{detail.rating}}">
       </pizza-detail>
     </template>
   </template>
   <script>
     Polymer({
       is: "pizza-details",
+
       properties: {
         details: {
           type: Array
+        },
+        sorting: {
+          type: String
+        }
+      },
+
+      ready: function () {
+        var that = this;
+
+        that.addEventListener('sortDetailsRating', function () {
+          that.sorting = 'rating';
+        });
+
+        this.addEventListener('sortDetailsAlpha', function () {
+          that.sorting = 'alpha';
+        });
+      },
+
+      _filter: function (item) {
+        return typeof item.rating !== "undefined" && typeof item.photos !== "undefined";
+      },
+
+      _sort: function(val) {
+        var that = this;
+
+        if (val === "rating") {
+          return function(a, b) {
+            if (a.rating === b.rating) return 0;
+            return (a.rating > b.rating) ? -1 : 1;
+          }
+        }
+
+        return function(a, b) {
+          if (a.name === b.name) return 0;
+          return (a.name < b.name) ? -1 : 1;
         }
       }
     });

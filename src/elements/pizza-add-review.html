@@ -1,26 +1,80 @@
 <!-- Base elements -->
-<link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html" />
-<link rel="import" href="../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html" />
-<link rel="import" href="../bower_components/paper-input/paper-input.html" />
-<link rel="import" href="../bower_components/paper-button/paper-button.html" />
+<link rel="import" href="../lib/polymer/polymer.html" />
+<link rel="import" href="../lib/paper-dialog/paper-dialog.html" />
+<link rel="import" href="../lib/paper-dialog-scrollable/paper-dialog-scrollable.html" />
+<link rel="import" href="../lib/paper-button/paper-button.html" />
+<link rel="import" href="../lib/paper-input/paper-input.html" />
 
 <dom-module id="pizza-add-review">
-  <style>
-
-  </style>
   <template>
-    <paper-dialog id="">
+    <style>
+      iron-icon.star {
+        --iron-icon-width: 16px;
+        --iron-icon-height: 16px;
+        color: var(--paper-amber-500);
+      }
+      iron-icon.star.gray {
+        color: var(--paper-grey-500);
+      }
+      h4 {
+        display: inline-block;
+        height: 30px;
+        margin-bottom: -11px;
+      }
+      .pizzeria-rating {
+        display: inline-block;
+        line-height: 1px;
+        margin-bottom: -4px;
+      }
+      .pizzeria-rating label {
+        float: left;
+        font-size: 0;
+      }
+      .pizzeria-rating input {
+        position: absolute;
+        opacity: 0;
+        text-indent: -9999px;
+      }
+    </style>
+    <paper-dialog modal id="addReview">
       <h2>Add a Review</h2>
-      <paper-dialog-scrollable can-scroll>
+      <paper-dialog-scrollable>
         <form>
-          <paper-input id="name" label="Name"></paper-input>
-          <paper-input id="comment" label="Comment"></paper-input>
+          <paper-input id="name" label="Name" required="true"></paper-input>
+          <h4 id="gdesc1">Rating:</h4>
+          <div role="radiogroup" aria-labelledby="gdesc1" class="pizzeria-rating">
+            <label for="rating1">
+              <input id="rating1" type="radio" name="rating" on-change="updateStar" value="1" selected></input>
+              <iron-icon id="oneStar" on-click="updateStar" class$="{{star1}}" icon="star"></iron-icon>
+              1
+            </label>
+            <label for="rating2">
+              <input id="rating2" type="radio" name="rating" on-change="updateStar" value="2"></input>
+              <iron-icon id="twoStar" on-click="updateStar" class$="{{star2}}" icon="star"></iron-icon>
+              2
+            </label>
+            <label for="rating3">
+              <input id="rating3" type="radio" name="rating" on-change="updateStar" value="3"></input>
+              <iron-icon id="threeStar" on-click="updateStar" class$="{{star3}}" icon="star"></iron-icon>
+              3
+            </label>
+            <label for="rating4">
+              <input id="rating4" type="radio" name="rating" on-change="updateStar" value="4"></input>
+              <iron-icon id="fourStar"  on-click="updateStar" class$="{{star4}}" icon="star"></iron-icon>
+              4
+            </label>
+            <label for="rating5">
+              <input id="rating5" type="radio" name="rating" on-change="updateStar" value="5"></input>
+              <iron-icon id="fiveStar"  on-click="updateStar" class$="{{star5}}" icon="star"></iron-icon>
+              5
+            </label>
+          </div>
+          <paper-input id="comment" label="Comment" required="true"></paper-input>
         </form>
       </paper-dialog-scrollable>
       <div class="buttons">
-        <paper-button dialog-dismiss>Cancel</paper-button>
         <paper-button dialog-confirm on-click="sendReview">Accept</paper-button>
+        <paper-button dialog-dismiss>Cancel</paper-button>
       </div>
     </paper-dialog>
   </template>
@@ -31,6 +85,30 @@
         pid: {
           type: String,
           observer: '_pidUpdated'
+        },
+        rating: {
+          type: String,
+          observer: '_ratingChanged'
+        },
+        star1: {
+          type: String,
+          value: "star"
+        },
+        star2: {
+          type: String,
+          value: "star gray"
+        },
+        star3: {
+          type: String,
+          value: "star gray"
+        },
+        star4: {
+          type: String,
+          value: "star gray"
+        },
+        star5: {
+          type: String,
+          value: "star gray"
         }
       },
       created: function() {},
@@ -38,16 +116,14 @@
       _pidUpdated: function () {
         console.dir("pizzaria updated 'Add Review'");
         var el = this.$$('paper-dialog');
-        el.className = "";
+        //el.className = "";
       },
       show: function () {
-        console.log("Add review event fired.");
         var el = this.$$('paper-dialog');
         el.open();
       },
       sendReview: function () {
         console.log("Sending Review");
-        
 
         var that = this;
         var name = this.$$('#name');
@@ -71,6 +147,42 @@
           name.value = "";
           comment.value = "";
         });
+      },
+      _ratingChanged: function(newValue, oldValue) {
+        console.dir(newValue);
+
+        // process stars
+        this.star5 = (newValue < 5) ? "star gray" : "star";
+        this.star4 = (newValue < 4) ? "star gray" : "star";
+        this.star3 = (newValue < 3) ? "star gray" : "star";
+        this.star2 = (newValue < 2) ? "star gray" : "star";
+        this.star1 = (newValue < 1) ? "star gray" : "star";
+      },
+      updateStar: function (e) {
+        console.dir(e.path[0].id);
+
+        switch(e.path[0].id) {
+          case 'fiveStar':
+          case 'rating5':
+            this.rating = 5;
+            break;
+          case 'fourStar':
+          case 'rating4':
+            this.rating = 4;
+            break;
+          case 'threeStar':
+          case 'rating3':
+            this.rating = 3;
+            break;
+          case 'twoStar':
+          case 'rating2':
+            this.rating = 2;
+            break;
+          case 'oneStar':
+          case 'rating1':
+            this.rating = 1;
+            break;
+        }
       }
     });
   </script>

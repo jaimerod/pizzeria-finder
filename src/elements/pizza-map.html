@@ -1,6 +1,6 @@
 <!-- Base elements -->
-<link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/google-map/google-map.html">
+<link rel="import" href="../lib/polymer/polymer.html" />
+<link rel="import" href="../lib/google-map/google-map.html">
 <link rel="import" href="pizza-details.html">
 <link rel="import" href="pizza-add-review.html">
 <link rel="import" href="pizza-reviews.html">
@@ -8,25 +8,8 @@
 
 <dom-module id="pizza-map">
   <template>
-    <style>
-      google-map {
-        height: 400px;
-        margin-bottom: 8px;
-      }
-    </style>
-    <!--<google-map
-      map="{{map}}"
-      api-key="AIzaSyBP6G38hX2uoNcjAHAUMQOYx1Uqv1z6PnQ"
-      latitude="34.05992193978781"
-      longitude="-118.2607514819336"
-      zoom="13"
-      disable-default-ui>
-      <template is="dom-repeat" items="{{pizzerias}}" as="pizzeria">
-        <pizzeria-marker map="{{map}}" details="{{pizzeria}}"></pizzeria-marker>
-      </template>
-    </google-map>-->
-
-    <pizza-details details="{{pizzerias}}"></pizza-details>
+    <style></style>
+    <pizza-details sorting="alpha" details="{{pizzerias}}"></pizza-details>
     <pizza-reviews></pizza-reviews>
     <pizza-add-review></pizza-add-review>
   </template>
@@ -43,15 +26,17 @@
 
         this.addEventListener('showReviews', this.showReviews);
         this.addEventListener('showAddReview', this.showAddReview);
+        this.addEventListener('sortRating', this.sortRating);
+        this.addEventListener('sortAlpha', this.sortAlpha);
 
         // Check if we cached the Pizzerias
-        if (window.localStorage && false) {
+      /*  if (window.localStorage && false) {
           var Pizzerias = localStorage.getItem('Pizzerias');
           if (Pizzerias) {
             that.pizzerias = JSON.parse(Pizzerias);
             return;
           }
-        }
+        }*/
 
         // We didn't cache them, let's download some
         var Pizzerias = fetch('https://jaime.rodriguez-jr.com/places.php');
@@ -73,12 +58,25 @@
         console.dir(event);
         var ReviewsDialog = this.$$('pizza-reviews');
         ReviewsDialog.pid = event.detail.pid;
+        ReviewsDialog.reviews = event.detail.reviews;
         //ReviewsDialog.show();
       },
       showAddReview: function (event) {
         var addReviewDialog = this.$$('pizza-add-review');
         addReviewDialog.pid = event.detail.pid;
         addReviewDialog.show();
+      },
+      sortAlpha: function (event) {
+        console.log("pizza-map: sortAlpha()");
+        var el = this.$$('pizza-details');
+        el.fire('sortDetailsAlpha');
+      },
+      sortRating: function (event) {
+        var that = this;
+
+        console.log("pizza-map: sortRating()");
+        var el = this.$$('pizza-details');
+        el.fire('sortDetailsRating');
       }
     });
   </script>

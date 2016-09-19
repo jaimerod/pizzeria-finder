@@ -1,16 +1,17 @@
 <!-- Base elements -->
-<link rel="import" href="../bower_components/polymer/polymer.html" />
-<link rel="import" href="../bower_components/paper-dialog/paper-dialog.html" />
-<link rel="import" href="../bower_components/paper-dialog-scrollable/paper-dialog-scrollable.html" />
+<link rel="import" href="../lib/polymer/polymer.html" />
+<link rel="import" href="../lib/paper-dialog/paper-dialog.html" />
+<link rel="import" href="../lib/paper-dialog-scrollable/paper-dialog-scrollable.html" />
+<link rel="import" href="../lib/paper-button/paper-button.html" />
 <link rel="import" href="pizza-review.html">
+
 
 <dom-module id="pizza-reviews">
   <template>
-    <style>
-    </style>
-    <paper-dialog id="reviews">
+    <style></style>
+    <paper-dialog modal id="reviews">
       <h2>Reviews</h2>
-      <paper-dialog-scrollable>
+      <paper-dialog-scrollable can-scroll>
         <template is="dom-repeat" items="{{reviews}}" as="review">
           <pizza-review details="{{review}}"></pizza-review>
         </template>
@@ -22,7 +23,6 @@
     </paper-dialog>
   </template>
   <script>
-    
     Polymer({
       is: "pizza-reviews",
       properties: {
@@ -45,9 +45,11 @@
       },
       _pidChanged: function () {
         if (this.pid == 0) return;
-        
+/*
         var that = this;
-        var Reviews = fetch('https://jaime.rodriguez-jr.com/reviews.php', {
+        console.log('Reviews:');
+        console.dir(that);*/
+        /*var Reviews = fetch('https://jaime.rodriguez-jr.com/reviews.php', {
           method: 'post',
           headers: {
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
@@ -69,9 +71,11 @@
               that.reviews = json.data;
             }
           });
-        })
+        })*/
       },
       _reviewsChanged: function(newValue, oldValue) {
+        console.log("_reviewsChanged");
+        console.dir(newValue);
         var el = this.$$('paper-dialog');
         el.open();
       },
