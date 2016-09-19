@@ -18,12 +18,14 @@
           <div class="content">
             <paper-button on-click="sortRating">Sort By Rating</paper-button>
             <paper-button on-click="sortAlpha">Sort Alphabetically</paper-button>
+            <paper-button on-click="filterOpened">{{openedFilterText}}</paper-button>
+            <paper-button on-click="filterDelivery">{{deliveryFilterText}}</paper-button>
           </div>
         </paper-header-panel>
         <paper-header-panel mode="waterfall" main>
           <paper-toolbar>
             <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-            <div class="title">LA Pizzeria Finder</div>
+            <h1 class="title">LA Pizzeria Finder</h1>
           </paper-toolbar>
           <div class="content">
             <pizza-map></pizza-map>
@@ -34,21 +36,48 @@
   <script>
     Polymer({
       is: 'pizzaria-finder',
-      properties: {},
-      ready: function () {},
-      sortRating: function () {
-        var el = this.$$('pizza-map');
-        var drawer = this.$$('paper-drawer-panel');
 
-        el.fire('sortRating');
-        drawer.closeDrawer();
+      properties: {
+        openedFilterText: {
+          type: String,
+          value: 'Show Open Pizzarias'
+        },
+        deliveryFilterText: {
+          type: String,
+          value: 'Delivery Only'
+        }
       },
-      sortAlpha: function () {
-        var el = this.$$('pizza-map');
-        var drawer = this.$$('paper-drawer-panel');
 
-        drawer.closeDrawer();
-        el.fire('sortAlpha');
+      filterOpened: function () {
+        if (this.openedFilterText === 'Show Open Pizzarias') {
+          this.openedFilterText = 'Show Open and Closed Pizzarias';
+        } else {
+          this.openedFilterText = 'Show Open Pizzarias';
+        }
+
+        this.$$('pizza-map').fire('filterOpened');
+        this.$$('paper-drawer-panel').closeDrawer();
+      },
+
+      filterDelivery: function () {
+        if (this.deliveryFilterText === 'Delivery Only') {
+          this.deliveryFilterText = 'Remove Delivery Filter';
+        } else {
+          this.deliveryFilterText = 'Delivery Only';
+        }
+
+        this.$$('pizza-map').fire('filterDeliver');
+        this.$$('paper-drawer-panel').closeDrawer();
+      },
+
+      sortRating: function () {
+        this.$$('pizza-map').fire('sortRating');
+        this.$$('paper-drawer-panel').closeDrawer();
+      },
+
+      sortAlpha: function () {
+        this.$$('pizza-map').fire('sortAlpha');
+        this.$$('paper-drawer-panel').closeDrawer();
       }
     });
   </script>

@@ -111,29 +111,22 @@
           value: "star gray"
         }
       },
-      created: function() {},
-      ready: function () {},
+
       _pidUpdated: function () {
-        console.dir("pizzaria updated 'Add Review'");
-        var el = this.$$('paper-dialog');
-        //el.className = "";
+        let el = this.$$('paper-dialog');
       },
+
       show: function () {
-        var el = this.$$('paper-dialog');
-        el.open();
+        this.$$('paper-dialog').open();
       },
+
       sendReview: function () {
-        console.log("Sending Review");
+        let name = this.$$('#name');
+        let comment = this.$$('#comment');
+        let payload = "";
 
-        var that = this;
-        var name = this.$$('#name');
-        var comment = this.$$('#comment');
-
-        console.dir(name);
-
-        var payload = "";
         payload += "action=add";
-        payload += "&id=" + that.pid;
+        payload += "&id=" + tjos.pid;
         payload += "&name=" + name.value;
         payload += "&message=" + comment.value;
 
@@ -143,14 +136,13 @@
             "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
           },
           method: "post"
-        }).then(function () {
+        }).then(() => {
           name.value = "";
           comment.value = "";
         });
       },
-      _ratingChanged: function(newValue, oldValue) {
-        console.dir(newValue);
 
+      _ratingChanged: function(newValue, oldValue) {
         // process stars
         this.star5 = (newValue < 5) ? "star gray" : "star";
         this.star4 = (newValue < 4) ? "star gray" : "star";
@@ -158,9 +150,8 @@
         this.star2 = (newValue < 2) ? "star gray" : "star";
         this.star1 = (newValue < 1) ? "star gray" : "star";
       },
-      updateStar: function (e) {
-        console.dir(e.path[0].id);
 
+      updateStar: function (e) {
         switch(e.path[0].id) {
           case 'fiveStar':
           case 'rating5':
@@ -181,7 +172,6 @@
           case 'oneStar':
           case 'rating1':
             this.rating = 1;
-            break;
         }
       }
     });

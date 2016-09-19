@@ -36,7 +36,7 @@
     </style>
     <paper-card image$="{{photo}}" alt="{{name}} header image">
       <div class="card-content">
-        <div class="pizzeria-header">{{name}}</div>
+        <h2 class="pizzeria-header">{{name}}</h2>
         <div class="pizzeria-rating">
           {{rating}}
           <iron-icon class$="{{star1}}" icon="star"></iron-icon>
@@ -120,24 +120,23 @@
       },
 
       ready: function () {
-        var that = this;
-        var Details = fetch('https://jaime.rodriguez-jr.com/places.php?action=details&id=' + that.placeid);
+        let Details = fetch('https://jaime.rodriguez-jr.com/places.php?action=details&id=' + this.placeid);
 
-        Details.then(function (response) {
+        Details.then((response) => {
           if (response.status !== 200) {
             console.log('Looks like there was a problem. Status Code: ' +  response.status);
             return;
           }
 
           // It worked!  Let's do stuff...
-          response.text().then(function (responseText) {
-            var place = JSON.parse(responseText).result;
+          response.text().then((responseText) => {
+            let place = JSON.parse(responseText).result;
 
             if (place) {
-              that.address = place.formatted_address;
-              that.tags = place.types;
-              that.hours = place.opening_hours.weekday_text;
-              that.reviews = place.reviews;
+              this.address = place.formatted_address;
+              this.tags = place.types;
+              this.hours = place.opening_hours.weekday_text;
+              this.reviews = place.reviews;
             }
           });
         })
@@ -145,21 +144,19 @@
 
       _photosChanged: function (newValue, oldValue) {
         this.photo = "";
-        var base = "https://maps.googleapis.com/maps/api/place/photo?";
+        let base = "https://maps.googleapis.com/maps/api/place/photo?";
         base = base + "photoreference=" + newValue[0].photo_reference;
         base = base + "&maxheight=200";
-        base = base + "&key={{APIKEY}}"
+        base = base + "&key=AIzaSyCnKZVbzbwfU8VkEI8IaVIaNjAakGq68Hg"
         this.photo = base;
       },
 
       _ratingChanged: function (newValue, oldValue) {
-        var that = this;
-
-        that.star5 = (that.rating < 4.5) ? "star gray" : "star";
-        that.star4 = (that.rating < 3.5) ? "star gray" : "star";
-        that.star3 = (that.rating < 2.5) ? "star gray" : "star";
-        that.star2 = (that.rating < 1.5) ? "star gray" : "star";
-        that.star1 = (that.rating < 0.5) ? "star gray" : "star";
+        this.star5 = (this.rating < 4.5) ? "star gray" : "star";
+        this.star4 = (this.rating < 3.5) ? "star gray" : "star";
+        this.star3 = (this.rating < 2.5) ? "star gray" : "star";
+        this.star2 = (this.rating < 1.5) ? "star gray" : "star";
+        this.star1 = (this.rating < 0.5) ? "star gray" : "star";
       },
 
       addReview: function () {

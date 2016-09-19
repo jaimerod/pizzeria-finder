@@ -10,7 +10,7 @@
       is="dom-repeat"
       items="{{details}}"
       as="detail"
-      filter="_filter"
+      filter="{{_filter(openFilter, deliveryFilter)}}"
       sort="{{_sort(sorting)}}">
       <pizza-detail
         placeid="{{detail.place_id}}"
@@ -18,7 +18,6 @@
         pid="{{detail.id}}"
         name="{{detail.name}}"
         photos="{{detail.photos}}"
-        tags="{{detail.type}}"
         rating="{{detail.rating}}">
       </pizza-detail>
     </template>
@@ -26,43 +25,73 @@
   <script>
     Polymer({
       is: "pizza-details",
-
       properties: {
         details: {
           type: Array
         },
         sorting: {
-          type: String
+          type: String,
+          value: 'alpha'
+        },
+        openFilter: {
+          type: Boolean,
+          value: false
+        },
+        deliveryFilter: {
+          type: Boolean,
+          value: false
         }
       },
 
       ready: function () {
-        var that = this;
-
-        that.addEventListener('sortDetailsRating', function () {
-          that.sorting = 'rating';
+        this.addEventListener('sortDetailsRating', () => {
+          this.sorting = 'rating';
         });
 
-        this.addEventListener('sortDetailsAlpha', function () {
-          that.sorting = 'alpha';
+        this.addEventListener('sortDetailsAlpha', () => {
+          this.sorting = 'alpha';
+        });
+
+        this.addEventListener('filterDetailsOpened', () => {
+          this.openFilter = !this.openFilter;
+        });
+
+        this.addEventListener('filterDetailsDelivery', () => {
+          this.deliveryFilter = !this.openFilter;
         });
       },
 
-      _filter: function (item) {
-        return typeof item.rating !== "undefined" && typeof item.photos !== "undefined";
+      _filter: (open, deliver) => {
+        return (item) => {
+          let hasRating = typeof item.rating !== "undefined";
+          let hasPhoto = typeof item.photos !== "undefined";
+          let filter = hasRating && hasPhoto;
+          let isOpened = typeof item.opening_hours !== "undefined" && item.opening_hours.open_now;
+          let delivers = !!item.types.filter((value) => {
+            return value == 'meal_delivery';
+          }).length;
+
+          if (deliver) {
+            filter = filter && delivers;
+          }
+
+          if (open) {
+            filter = filter && isOpened;
+          }
+
+          return filter;
+        }
       },
 
-      _sort: function(val) {
-        var that = this;
-
+      _sort: (val) => {
         if (val === "rating") {
-          return function(a, b) {
+          return (a, b) => {
             if (a.rating === b.rating) return 0;
             return (a.rating > b.rating) ? -1 : 1;
           }
         }
 
-        return function(a, b) {
+        return (a, b) => {
           if (a.name === b.name) return 0;
           return (a.name < b.name) ? -1 : 1;
         }

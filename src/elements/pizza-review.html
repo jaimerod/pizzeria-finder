@@ -59,37 +59,32 @@
           observer: '_detailsUpdated'
         }
       },
-      created: function() {},
-      ready: function () {
-        console.dir(this.details);
-      },
       _detailsUpdated: function () {
-        console.log("Updated Details.");
-
         this.star5 = (this.details.rating < 4.5) ? "star gray" : "star";
         this.star4 = (this.details.rating < 3.5) ? "star gray" : "star";
         this.star3 = (this.details.rating < 2.5) ? "star gray" : "star";
         this.star2 = (this.details.rating < 1.5) ? "star gray" : "star";
         this.star1 = (this.details.rating < 0.5) ? "star gray" : "star";
 
-        var d = new Date(0);
-        var month = 0;
-        var day = 0;
-        var year = 0;
+        let d = new Date(0);
+        let month = 0;
+        let day = 0;
+        let year = 0;
 
         d.setUTCSeconds(this.details.time);
         month = d.getMonth() + 1;
         day = d.getDate();
         year = d.getFullYear();
         hours = d.getUTCHours() + 1;
+
         if (hours > 12) {
           hours = hours - 12;
           ampm = "PM";
         } else {
           ampm = "AM"
         }
-        minutes = d.getUTCMinutes();
 
+        minutes = d.getUTCMinutes();
         this.date = month + "-" + day + "-" + year + " " + hours + ":" + minutes + ampm;
       }
     });

@@ -25,6 +25,7 @@
   <script>
     Polymer({
       is: "pizza-reviews",
+
       properties: {
         pid: {
           type: String,
@@ -35,59 +36,60 @@
           observer: '_reviewsChanged'
         }
       },
+
       ready: function (event) {
-        var that = this;
-        var dialog = this.$$('#reviews');
+        let dialog = this.$$('#reviews');
         dialog.clickEvents = true;
-        dialog.addEventListener('iron-overlay-closed', function (e) {
-          that.closeReviews();
+        dialog.addEventListener('iron-overlay-closed', (e) => {
+          this.closeReviews();
         });
       },
+
       _pidChanged: function () {
         if (this.pid == 0) return;
-/*
-        var that = this;
-        console.log('Reviews:');
-        console.dir(that);*/
-        /*var Reviews = fetch('https://jaime.rodriguez-jr.com/reviews.php', {
-          method: 'post',
-          headers: {
-            "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
-          },
-          body: "action=get&id=" + that.pid
-        });
-
-        Reviews.then(function (response) {
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' +  response.status);
-            return;
-          }
-
-          // It worked!  Let's do stuff...
-          response.text().then(function (responseText) {
-            var json = JSON.parse(responseText);
-
-            if (typeof json.data !== "undefined") {
-              that.reviews = json.data;
-            }
+        /*
+          var that = this;
+          console.log('Reviews:');
+          console.dir(that);*/
+          /*var Reviews = fetch('https://jaime.rodriguez-jr.com/reviews.php', {
+            method: 'post',
+            headers: {
+              "Content-type": "application/x-www-form-urlencoded; charset=UTF-8"
+            },
+            body: "action=get&id=" + that.pid
           });
-        })*/
+
+          Reviews.then(function (response) {
+            if (response.status !== 200) {
+              console.log('Looks like there was a problem. Status Code: ' +  response.status);
+              return;
+            }
+
+            // It worked!  Let's do stuff...
+            response.text().then(function (responseText) {
+              var json = JSON.parse(responseText);
+
+              if (typeof json.data !== "undefined") {
+                that.reviews = json.data;
+              }
+            });
+          })
+        */
       },
+
       _reviewsChanged: function(newValue, oldValue) {
-        console.log("_reviewsChanged");
-        console.dir(newValue);
-        var el = this.$$('paper-dialog');
-        el.open();
+        this.$$('paper-dialog').open();
       },
+
       showAddReview: function (event) {
         this.fire('showAddReview', {
           pid: this.pid
         });
       },
+
       closeReviews: function () {
         this.pid=0;
-        var el = this.$$('paper-dialog');
-        el.close();
+        this.$$('paper-dialog').close();
       }
     });
   </script>
